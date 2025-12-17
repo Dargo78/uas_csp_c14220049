@@ -35,7 +35,7 @@ export default function RegisterPage() {
       Swal.fire({
         icon: 'success',
         title: 'Registration Successful',
-        text: 'You can now login with your credentials',
+        text: 'Please check your email to confirm your account',
       }).then(() => {
         router.push('/login')
       })
