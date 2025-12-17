@@ -20,7 +20,7 @@ function SubmitButton() {
 }
 
 export default function RegisterPage() {
-  const [state, formAction] = useActionState(register, { error: null })
+  const [state, formAction] = useActionState(register, { error: '' })
 
   useEffect(() => {
     if (state?.error) {

@@ -20,7 +20,7 @@ function SubmitButton() {
 }
 
 export default function LoginPage() {
-  const [state, formAction] = useActionState(login, { error: null })
+  const [state, formAction] = useActionState(login, { error: '' })
 
   useEffect(() => {
     if (state?.error) {
