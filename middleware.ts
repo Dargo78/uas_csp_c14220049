@@ -22,17 +22,17 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user && request.nextUrl.pathname === '/home') {
+  if (!user && request.nextUrl.pathname === '/dashboard') {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
   if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/register')) {
-    return NextResponse.redirect(new URL('/home', request.url))
+    return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/home', '/login', '/register'],
+  matcher: ['/dashboard', '/login', '/register'],
 }

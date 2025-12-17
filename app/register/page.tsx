@@ -4,6 +4,7 @@ import { useActionState, useEffect } from 'react'
 import { useFormStatus } from 'react-dom'
 import { register } from './actions'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
 
 function SubmitButton() {
@@ -21,6 +22,7 @@ function SubmitButton() {
 
 export default function RegisterPage() {
   const [state, formAction] = useActionState(register, { error: '' })
+  const router = useRouter()
 
   useEffect(() => {
     if (state?.error) {
@@ -33,10 +35,12 @@ export default function RegisterPage() {
       Swal.fire({
         icon: 'success',
         title: 'Registration Successful',
-        text: 'Please check your email to confirm your account',
+        text: 'You can now login with your credentials',
+      }).then(() => {
+        router.push('/login')
       })
     }
-  }, [state])
+  }, [state, router])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 text-black">
